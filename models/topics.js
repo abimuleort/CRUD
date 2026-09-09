@@ -33,4 +33,10 @@ function createTopic(nombre){
     }
     topics.push(newTopic)
 }
-module.exports = {topics, createTopic}
+function deleteTopic(id){
+    const indice = topics.findIndex(t => t.id === parseInt(id))
+    if (indice === -1) return false
+    topics.splice(indice, 1)
+    return true
+}
+module.exports = {topics, createTopic, deleteTopic}

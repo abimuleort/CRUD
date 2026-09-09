@@ -8,3 +8,4 @@ app.listen(3000, () => {
 })
 app.use(express.urlencoded({extended: true}))
 app.post('/topics', topicsController.createTopic)
+app.post('/topics/:id/delete', topicsController.deleteTopic)

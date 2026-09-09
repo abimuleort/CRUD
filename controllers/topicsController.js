@@ -10,6 +10,10 @@ module.exports = {
         const nombre = req.body.nombre
         topics.createTopic(nombre)
         res.redirect('/')
+    },
+    deleteTopic: function (req,res){
+        topics.deleteTopic(req.params.id)
+        res.redirect('/')
     }
 }
 function createTopic(req, res){
@@ -17,3 +21,7 @@ function createTopic(req, res){
     topics.createTopic(nombre)
     res.redirect('/topics')
 }
+// function deleteTopic(req, res){
+//     topics.deleteTopic(req.params.id)
+//     res.redirect('/')
+// }
