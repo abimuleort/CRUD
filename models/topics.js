@@ -24,4 +24,13 @@ let topics = [
         ]
     }
 ]
-module.exports = topics
+function createTopic(nombre){
+    const newTopic = {
+        id: (topics.length) + 1,
+        nombre,
+        votos: 0,
+        enlaces: []
+    }
+    topics.push(newTopic)
+}
+module.exports = {topics, createTopic}

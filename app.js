@@ -6,3 +6,5 @@ app.get('/', topicsController.getTopics)
 app.listen(3000, () => {    
     console.log('Servidor corriendo en http://localhost:3000')
 })
+app.use(express.urlencoded({extended: true}))
+app.post('/topics', topicsController.createTopic)

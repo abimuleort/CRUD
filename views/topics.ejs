@@ -3,3 +3,7 @@
     <li><%= topic.nombre %></li>
   <% }) %>
 </ul>
+<form action="/topics" method="post">
+  <input type="text" name="nombre" placeholder="Nombre del tema" required>
+  <button type="submit">Agregar tema</button>
+</form>
