@@ -14,6 +14,12 @@ module.exports = {
     deleteTopic: function (req,res){
         topics.deleteTopic(req.params.id)
         res.redirect('/')
+    },
+    updateTopic: function (req, res){
+        const id = req.params.id
+        const nuevoNombre = req.body.nuevoNombre
+        topics.updateTopic(id, nuevoNombre)
+        res.redirect('/')
     }
 }
 function createTopic(req, res){

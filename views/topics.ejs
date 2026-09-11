@@ -1,9 +1,19 @@
 <ul>
   <% topics.forEach(topic => { %>
-    <li><%= topic.nombre %></li>
+    <li>
+      <%= topic.nombre %>
+      <form action="/topics/<%= topic.id %>/delete" method="POST">
+        <button type="submit">Borrar</button>
+      </form>
+      <form action="/topics/<%= topic.id %>/update" method="POST">
+        <input type="text" name="nuevoNombre" value="<%= topic.nombre %>">
+        <button type="submit">Actualizar</button>
+      </form>
+    </li>
   <% }) %>
 </ul>
-<form action="/topics" method="post">
+
+<form action="/topics" method="POST">
   <input type="text" name="nombre" placeholder="Nombre del tema" required>
   <button type="submit">Agregar tema</button>
 </form>

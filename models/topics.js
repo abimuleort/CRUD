@@ -39,4 +39,12 @@ function deleteTopic(id){
     topics.splice(indice, 1)
     return true
 }
-module.exports = {topics, createTopic, deleteTopic}
+function updateTopic(id, nuevoNombre){
+    const indice = topics.findIndex(t => t.id === parseInt(id))
+    if (indice !== -1){
+        topics[indice].nombre = nuevoNombre;
+        return true
+    }
+    return false
+}
+module.exports = {topics, createTopic, deleteTopic, updateTopic}
