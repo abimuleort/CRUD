@@ -47,4 +47,15 @@ function updateTopic(id, nuevoNombre){
     }
     return false
 }
-module.exports = {topics, createTopic, deleteTopic, updateTopic}
+function createLink(topicId, url){
+    const topic = topics.find(t => t.id === parseInt(topicId))
+    if (!topic) return false
+    const newLink = {
+        id: (topic.enlaces.length) +1,
+        url,
+        votos: 0
+    }
+    topic.enlaces.push(newLink)
+    return true
+}
+module.exports = {topics, createTopic, deleteTopic, updateTopic, createLink}

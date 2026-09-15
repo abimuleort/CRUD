@@ -20,13 +20,19 @@ module.exports = {
         const nuevoNombre = req.body.nuevoNombre
         topics.updateTopic(id, nuevoNombre)
         res.redirect('/')
+    },
+    createLink: function (req, res){
+        const id = req.params.id
+        const link = req.body.link
+        topics.createLink(id, link)
+        res.redirect('/')
     }
 }
-function createTopic(req, res){
-    const nombre = req.body.nombre
-    topics.createTopic(nombre)
-    res.redirect('/topics')
-}
+// function createTopic(req, res){
+//     const nombre = req.body.nombre
+//     topics.createTopic(nombre)
+//     res.redirect('/topics')
+// }
 // function deleteTopic(req, res){
 //     topics.deleteTopic(req.params.id)
 //     res.redirect('/')
