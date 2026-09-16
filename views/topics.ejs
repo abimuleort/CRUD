@@ -2,6 +2,11 @@
   <% topics.forEach(topic => { %>
     <li>
       <%= topic.nombre %>
+      <ul>
+        <% topic.enlaces.forEach(enlace => { %>
+          <li><%= enlace.url %></li>
+        <% }) %>
+      </ul>
       <form action="/topics/<%= topic.id %>/delete" method="POST">
         <button type="submit">Borrar</button>
       </form>
