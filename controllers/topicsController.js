@@ -26,6 +26,19 @@ module.exports = {
         const link = req.body.link
         topics.createLink(id, link)
         res.redirect('/')
+    },
+    deleteLink: function (req,res){
+        const topicId = req.params.id
+        const linkId = req.params.linkId
+        topics.deleteLink(topicId, linkId)
+        res.redirect('/')
+    },
+    updateLink: function (req,res){
+        const topicId = req.params.id
+        const linkId = req.params.linkId
+        const nuevaURL = req.body.nuevaURL
+        topics.updateLink(topicId, linkId, nuevaURL)
+        res.redirect('/')
     }
 }
 // function createTopic(req, res){

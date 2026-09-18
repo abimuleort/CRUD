@@ -4,7 +4,16 @@
       <%= topic.nombre %>
       <ul>
         <% topic.enlaces.forEach(enlace => { %>
-          <li><%= enlace.url %></li>
+          <li>
+            <%= enlace.url %>
+            <form action="/topics/<%= topic.id %>/links/<%= enlace.id %>/delete" method="post">
+              <button type="submit">Borrar enlace</button>
+            </form>
+            <form action="/topics/<%= topic.id %>/links/<%= enlace.id %>/update" method="POST">
+            <input type="text" name="nuevaURL" value="<%= enlace.url %>">
+            <button type="submit">Actualizar Enlace</button>
+            </form>
+          </li>
         <% }) %>
       </ul>
       <form action="/topics/<%= topic.id %>/delete" method="POST">

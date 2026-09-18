@@ -58,4 +58,24 @@ function createLink(topicId, url){
     topic.enlaces.push(newLink)
     return true
 }
-module.exports = {topics, createTopic, deleteTopic, updateTopic, createLink}
+function deleteLink(topicId, linkId){
+    const topic = topics.find(t => t.id === parseInt(topicId))
+    if (!topic) return false
+    const link = topic.enlaces.findIndex(e => e.id === parseInt(linkId))
+    if (link !== -1){
+        topic.enlaces.splice(link, 1)
+        return true
+    } 
+    return false
+}
+function updateLink(topicId, linkId, nuevaURL){
+    const topic = topics.find(t => t.id === parseInt(topicId))
+    if (!topic) return false
+    const link = topic.enlaces.findIndex(e => e.id === parseInt(linkId))
+    if (link !== -1){
+        topic.enlaces[link].url = nuevaURL;
+        return true
+    }
+    return false
+}
+module.exports = {topics, createTopic, deleteTopic, updateTopic, createLink, deleteLink, updateLink}
