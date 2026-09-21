@@ -16,6 +16,9 @@
           </li>
         <% }) %>
       </ul>
+      <form action="/topics/<%= topic.id %>/vote" method="POST">
+        <button type="submit">👍 Votar (<%= topic.votos %>)</button>
+      </form>
       <form action="/topics/<%= topic.id %>/delete" method="POST">
         <button type="submit">Borrar</button>
       </form>

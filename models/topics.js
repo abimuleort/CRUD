@@ -78,4 +78,10 @@ function updateLink(topicId, linkId, nuevaURL){
     }
     return false
 }
-module.exports = {topics, createTopic, deleteTopic, updateTopic, createLink, deleteLink, updateLink}
+function voteTopic(id){
+    const topic = topics.find(t => t.id === parseInt(id))
+    if (!topic) return false
+    topic.votos = topic.votos +1;
+    return true
+}
+module.exports = {topics, createTopic, deleteTopic, updateTopic, createLink, deleteLink, updateLink, voteTopic}

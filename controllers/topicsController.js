@@ -39,6 +39,11 @@ module.exports = {
         const nuevaURL = req.body.nuevaURL
         topics.updateLink(topicId, linkId, nuevaURL)
         res.redirect('/')
+    },
+    voteTopic: function (req,res){
+        const id = req.params.id
+        topics.voteTopic(id)
+        res.redirect('/')
     }
 }
 // function createTopic(req, res){
