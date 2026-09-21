@@ -47,6 +47,11 @@ function updateTopic(id, nuevoNombre){
     }
     return false
 }
+function getAllTopics(){
+    const copiaTopicsArray = [...topics]
+    copiaTopicsArray.sort((a, b) => b.votos - a.votos);
+    return copiaTopicsArray
+}
 function createLink(topicId, url){
     const topic = topics.find(t => t.id === parseInt(topicId))
     if (!topic) return false
@@ -92,4 +97,4 @@ function voteLink(topicId, linkId){
     link.votos = link.votos +1;
     return true
 }
-module.exports = {topics, createTopic, deleteTopic, updateTopic, createLink, deleteLink, updateLink, voteTopic, voteLink}
+module.exports = {topics, createTopic, deleteTopic, updateTopic, createLink, deleteLink, updateLink, voteTopic, voteLink, getAllTopics}
