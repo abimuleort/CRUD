@@ -44,14 +44,11 @@ module.exports = {
         const id = req.params.id
         topics.voteTopic(id)
         res.redirect('/')
+    },
+    voteLink: function (req,res){
+        const topicId = req.params.id
+        const linkId = req.params.linkId
+        topics.voteLink(topicId, linkId)
+        res.redirect('/')
     }
 }
-// function createTopic(req, res){
-//     const nombre = req.body.nombre
-//     topics.createTopic(nombre)
-//     res.redirect('/topics')
-// }
-// function deleteTopic(req, res){
-//     topics.deleteTopic(req.params.id)
-//     res.redirect('/')
-// }

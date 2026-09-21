@@ -84,4 +84,12 @@ function voteTopic(id){
     topic.votos = topic.votos +1;
     return true
 }
-module.exports = {topics, createTopic, deleteTopic, updateTopic, createLink, deleteLink, updateLink, voteTopic}
+function voteLink(topicId, linkId){
+    const topic = topics.find(t => t.id === parseInt(topicId))
+    if (!topic) return false
+    const link = topic.enlaces.find(e => e.id === parseInt(linkId))
+    if (!link) return false
+    link.votos = link.votos +1;
+    return true
+}
+module.exports = {topics, createTopic, deleteTopic, updateTopic, createLink, deleteLink, updateLink, voteTopic, voteLink}

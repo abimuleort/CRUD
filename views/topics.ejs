@@ -13,6 +13,9 @@
             <input type="text" name="nuevaURL" value="<%= enlace.url %>">
             <button type="submit">Actualizar Enlace</button>
             </form>
+            <form action="/topics/<%= topic.id %>/links/<%= enlace.id %>/vote" method="POST">
+              <button type="submit">👍 Votar (<%= enlace.votos %>)</button>
+            </form>
           </li>
         <% }) %>
       </ul>
