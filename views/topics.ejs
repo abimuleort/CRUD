@@ -1,4 +1,4 @@
-<ul>
+<ul id="topicsList">
   <% topics.forEach(topic => { %>
     <li>
       <%= topic.nombre %>
@@ -6,22 +6,19 @@
         <% topic.enlaces.forEach(enlace => { %>
           <li>
             <%= enlace.url %>
-            <form action="/topics/<%= topic.id %>/links/<%= enlace.id %>/delete" method="post">
+            <form action="/topics/<%= topic.id %>/links/<%= enlace.id %>/delete" method="POST">
               <button type="submit">Borrar enlace</button>
             </form>
             <form action="/topics/<%= topic.id %>/links/<%= enlace.id %>/update" method="POST">
-            <input type="text" name="nuevaURL" value="<%= enlace.url %>">
-            <button type="submit">Actualizar Enlace</button>
+              <input type="text" name="nuevaURL" value="<%= enlace.url %>">
+              <button type="submit">Actualizar Enlace</button>
             </form>
-            <form action="/topics/<%= topic.id %>/links/<%= enlace.id %>/vote" method="POST">
+            <form class="vote-form" action="/topics/<%= topic.id %>/links/<%= enlace.id %>/vote" method="POST">
               <button type="submit"> Votar (<%= enlace.votos %>)</button>
             </form>
           </li>
         <% }) %>
       </ul>
-      <form action="/topics/<%= topic.id %>/vote" method="POST">
-        <button type="submit"> Votar (<%= topic.votos %>)</button>
-      </form>
       <form action="/topics/<%= topic.id %>/delete" method="POST">
         <button type="submit">Borrar</button>
       </form>
@@ -33,6 +30,9 @@
         <input type="text" name="link" placeholder="URL del enlace" required>
         <button type="submit">Agregar enlace</button>
       </form>
+      <form class="vote-form" action="/topics/<%= topic.id %>/vote" method="POST">
+        <button type="submit"> Votar (<%= topic.votos %>)</button>
+      </form>
     </li>
   <% }) %>
 </ul>
@@ -41,3 +41,5 @@
   <input type="text" name="nombre" placeholder="Nombre del tema" required>
   <button type="submit">Agregar tema</button>
 </form>
+
+<script src="/js/votes.js"></script>
