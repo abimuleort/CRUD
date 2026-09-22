@@ -49,7 +49,8 @@ function updateTopic(id, nuevoNombre){
 }
 function getAllTopics(){
     const copiaTopicsArray = [...topics]
-    copiaTopicsArray.sort((a, b) => b.votos - a.votos);
+    copiaTopicsArray.sort((a, b) => b.votos - a.votos)
+    copiaTopicsArray.forEach(c => {c.enlaces.sort((a, b) => b.votos - a.votos)});
     return copiaTopicsArray
 }
 function createLink(topicId, url){
