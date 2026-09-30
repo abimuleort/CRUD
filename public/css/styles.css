@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap');
+
+:root {
+  --paper: #FAF6EF;
+  --ink: #232323;
+  --ink-soft: #6B6558;
+  --forest: #2F5233;
+  --forest-dark: #223e26;
+  --amber: #C77C34;
+  --amber-dark: #a3641f;
+  --line: #D8D0BE;
+  --card: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2.5rem 1.5rem 4rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.9rem;
+  margin: 0 0 0.25rem;
+}
+
+.page-subtitle {
+  color: var(--ink-soft);
+  margin: 0 0 2.5rem;
+  font-size: 0.95rem;
+}
+
+/* Lista de temas */
+#topicsList {
+  list-style: none;
+  margin: 0 0 2.5rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.topic-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.25rem 1.25rem 1rem;
+}
+
+.topic-name {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  color: var(--forest-dark);
+}
+
+/* Enlaces anidados */
+.links-list {
+  list-style: none;
+  margin: 0 0 0.9rem;
+  padding: 0.75rem 0 0.25rem;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.link-item {
+  font-size: 0.9rem;
+}
+
+.link-url {
+  display: block;
+  color: var(--ink-soft);
+  word-break: break-all;
+  margin-bottom: 0.35rem;
+}
+
+/* Filas de acciones */
+.actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.actions-row form {
+  margin: 0;
+  display: flex;
+  gap: 0.35rem;
+}
+
+input[type="text"] {
+  font-family: inherit;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+  min-width: 0;
+}
+
+input[type="text"]:focus {
+  outline: 2px solid var(--forest);
+  outline-offset: 1px;
+}
+
+button {
+  font-family: inherit;
+  font-size: 0.82rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f1ece0;
+}
+
+/* Botón de votar: siempre el acento ámbar, distinto de las demás acciones */
+.vote-form button {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #fff;
+  font-weight: 600;
+}
+
+.vote-form button:hover {
+  background: var(--amber-dark);
+  border-color: var(--amber-dark);
+}
+
+/* Formulario de crear tema */
+.new-topic-form {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.new-topic-form input[type="text"] {
+  flex: 1;
+}
+
+.new-topic-form button {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: #fff;
+  font-weight: 600;
+}
+
+.new-topic-form button:hover {
+  background: var(--forest-dark);
+  border-color: var(--forest-dark);
+}

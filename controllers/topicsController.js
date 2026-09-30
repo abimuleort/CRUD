@@ -41,14 +41,9 @@ module.exports = {
         res.redirect('/')
     },
     voteTopic: function (req,res){
-        const id = req.params.id
-        topics.voteTopic(id)
-        res.json(topics.getAllTopics())
+        res.json({ votos: topics.voteTopic(req.params.id) })
     },
     voteLink: function (req,res){
-        const topicId = req.params.id
-        const linkId = req.params.linkId
-        topics.voteLink(topicId, linkId)
-        res.json(topics.getAllTopics())
+        res.json({ votos: topics.voteLink(req.params.id, req.params.linkId) })
     }
 }
