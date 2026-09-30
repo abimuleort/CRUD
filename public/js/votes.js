@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const { votos } = await res.json()
       if (votos == null) return
 
-      form.querySelector('button').textContent = `👍 ${votos}`
+      form.querySelector('button').textContent = `Votos: ${votos}`
       const item = form.closest('li')
       item.dataset.votos = votos
       sortBy(item.parentElement)
