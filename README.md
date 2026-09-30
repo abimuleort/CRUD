@@ -9,6 +9,7 @@ Aplicación web para agregar, actualizar, eliminar y votar temas de aprendizaje 
 - Sistema de **votación** para temas y enlaces.
 - **Reordenamiento automático** del contenido según la cantidad de votos.
 - Actualización de los votos **en tiempo real** (sin recargar la página) usando `fetch` con JavaScript puro.
+- Interfaz con estilos propios (paleta cálida tipo "cuaderno de apuntes", tipografía Fraunces + system-ui).
 
 ## Tecnologías
 
@@ -16,6 +17,7 @@ Aplicación web para agregar, actualizar, eliminar y votar temas de aprendizaje 
 - Express
 - EJS (motor de plantillas)
 - JavaScript puro (frontend)
+- CSS propio (sin frameworks)
 - Arquitectura MVC
 
 ## Estructura del proyecto
@@ -29,6 +31,8 @@ Aplicación web para agregar, actualizar, eliminar y votar temas de aprendizaje 
 ├── views/
 │   └── topics.ejs             # Vista principal
 ├── public/
+│   ├── css/
+│   │   └── styles.css         # Estilos de la aplicación
 │   └── js/
 │       └── votes.js           # Lógica de votación en el cliente (fetch + DOM)
 └── package.json
@@ -62,7 +66,7 @@ Aplicación web para agregar, actualizar, eliminar y votar temas de aprendizaje 
 - **Agregar un tema**: completá el formulario al final de la página y hacé clic en "Agregar tema".
 - **Editar/borrar un tema**: usá los formularios y botones correspondientes junto a cada tema.
 - **Agregar/editar/borrar un enlace**: cada tema tiene su propia sección de enlaces con sus respectivos formularios.
-- **Votar**: hacé clic en el botón "Votar" de un tema o enlace. El contador se actualiza al instante y el contenido se reordena automáticamente según los votos, sin recargar la página.
+- **Votar**: hacé clic en el botón de votar (ícono 👍) de un tema o enlace. El contador se actualiza al instante y el contenido se reordena automáticamente según los votos, sin recargar la página.
 
 ## Rutas principales
 
@@ -82,9 +86,13 @@ Aplicación web para agregar, actualizar, eliminar y votar temas de aprendizaje 
 
 - **Modelo** (`models/topics.js`): almacena los temas y enlaces en memoria, y contiene toda la lógica para crearlos, modificarlos, eliminarlos y ordenarlos por votos.
 - **Vista** (`views/topics.ejs`): renderiza los datos como HTML usando EJS.
-- **Controlador** (`controllers/topicsController.js`): recibe las solicitudes HTTP, llama al modelo correspondiente y decide la respuesta (renderizar la vista o devolver JSON).
+- **Controlador** (`controllers/topicsController.js`): recibe las solicitudes HTTP, llama al modelo correspondiente y decide la respuesta (renderizar la vista o devolver JSON para las acciones de voto).
+
+## Votación en tiempo real
+
+Los formularios de voto (identificados con la clase `vote-form`) son interceptados por `public/js/votes.js` usando delegación de eventos sobre la lista de temas. En vez de recargar la página, se envía la solicitud con `fetch`, el servidor responde con la lista completa ya reordenada en formato JSON, y el DOM se redibuja con esos datos. El resto de las acciones (crear, editar, borrar) funcionan de forma tradicional, con recarga de página.
 
 ## Notas
 
 - Los datos se almacenan **en memoria**: se reinician cada vez que el servidor se reinicia.
-- El proyecto fue desarrollado como parte de un challenge educativo, priorizando una implementación simple y funcional sobre los requerimientos opcionales (autenticación, validaciones avanzadas, estilos con Tailwind).
+- El proyecto fue desarrollado como parte de un challenge educativo, priorizando una implementación simple y funcional sobre los requerimientos opcionales (autenticación, validaciones avanzadas, Tailwind CSS).
